@@ -74,7 +74,7 @@ export const Hero: React.FC<HeroProps> = ({
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-500 to-emerald-500">
               {language === 'ar'
                 ? 'مهندس برمجيات • دعم فني وخوادم • تسويق رقمي'
-                : 'Software Developer • IT Support Specialist • Digital Marketer'}
+                : 'Software Developer • IT Support Specialist • Digital Marketing'}
             </span>
           </h1>
 

@@ -392,14 +392,14 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
 
             {/* Dark / Light Toggle */}
-            <button
+            {/* <button
               id="btn-toggle-theme"
               onClick={onToggleDark}
               aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
               className="p-1.5 sm:p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700/80 transition-colors"
             >
               {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-700" />}
-            </button>
+            </button> */}
 
             {/* Primary Hire / Book CTA */}
             <button

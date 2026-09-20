@@ -75,51 +75,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     }, 1000);
   };
 
-  const handleDownloadCV = (lang: 'en' | 'ar') => {
-    // Generate a clean text CV summary or download document
-    const cvText =
-      lang === 'en'
-        ? `MASUM RAZA - Professional CV / Resume
-Role: Software Developer • IT Support Specialist • Performance Marketer
-Contact: masumraz84@gmail.com | WhatsApp: +966 50 123 4567 / +91 98765 43210
-Location: Riyadh, Saudi Arabia / Global Remote
 
-PROFESSIONAL SUMMARY:
-Over 7+ years of dual-discipline experience combining modern Full-Stack Software Engineering (React, Node.js, TypeScript, PostgreSQL), Enterprise IT Support & Cloud Infrastructure (Linux, Windows Server, Azure AD, 99.9% Uptime SLA), and High-ROAS Performance Digital Marketing ($2.5M+ ad spend managed, Google Ads, Meta Ads, SEO).
-
-KEY SKILLS & STACK:
-- Frontend: React 19, Next.js, TypeScript, Tailwind CSS, State Management
-- Backend & Cloud: Node.js, Express, Python, PostgreSQL, Redis, Docker, AWS, Cloud Run
-- IT & Infrastructure: Linux Server Admin, Microsoft 365, Azure AD, Intune MDM, Cisco/Mikrotik
-- Marketing & Analytics: Google Ads, Meta Ads Manager, GA4, Server-Side GTM, Technical SEO
-
-VERIFIED ACHIEVEMENTS:
-- Scaled B2B SaaS traffic by +340% via organic SEO engine
-- Reduced enterprise IT ticket resolution time to under 14 minutes
-- Architected real-time fleet telematics platform handling 12k daily transactions
-- Managed e-commerce ad campaigns achieving 4.8x ROAS on $1.2M gross revenue.`
-        : `معصوم رضا - السيرة الذاتية المهنية
-التخصص: مهندس برمجيات • أخصائي دعم فني وخوادم • خبير تسويق رقمي
-البريد الإلكتروني: masumraz84@gmail.com | واتساب: +966 50 123 4567
-الموقع: الرياض، المملكة العربية السعودية / وعن بُعد دولياً
-
-ملخص الخبرة المهنية:
-أكثر من 7 سنوات خبرة عملية تجمع بين تطوير تطبيقات الويب والجوال المتكاملة (React, Node.js, TypeScript, PostgreSQL)، وإدارة البنية التحتية والدعم الفني للمؤسسات (خوادم لينكس، ويندوز، Microsoft 365، أمان سيبراني)، وإدارة حملات التسويق الرقمي عالية العائد (إعلانات جوجل وميتا، تحسين محركات البحث SEO، تحليلات GA4).
-
-أبرز الإنجازات:
-- مضاعفة أرباح المتاجر الإلكترونية بمعدل عائد إعلاني 4.8x ROAS
-- خفض زمن حل بلاغات الدعم الفني لأقل من 14 دقيقة في شركات كبرى
-- بناء منصات سحابية فورية بمعمارية WebSockets وتتبع لحظي
-- شهادات معتمدة من Amazon AWS و Google و Meta.`;
-
-    const blob = new Blob([cvText], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `Masum_Raza_CV_${lang.toUpperCase()}.txt`;
-    link.click();
-    URL.revokeObjectURL(url);
-  };
 
   return (
     <section id="contact" className="py-20 bg-slate-50 dark:bg-slate-900/40 relative">
@@ -153,7 +109,7 @@ VERIFIED ACHIEVEMENTS:
               <div className="space-y-4">
                 {/* WhatsApp Direct */}
                 <a
-                  href="https://wa.me/966501234567?text=Hello%20Masum,%20I%20would%20like%20to%20discuss%20a%20project"
+                  href="https://wa.me/+917257925345?text=Hello%20Masum,%20I%20would%20like%20to%20discuss%20a%20project"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3.5 p-3.5 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20 hover:bg-emerald-500/20 transition-all group"
@@ -166,7 +122,7 @@ VERIFIED ACHIEVEMENTS:
                       {t.contact.directPhone}
                     </div>
                     <div className="text-sm font-bold group-hover:underline">
-                      +966 50 123 4567 / WhatsApp
+                      +917257925345 / WhatsApp
                     </div>
                   </div>
                 </a>
@@ -211,27 +167,29 @@ VERIFIED ACHIEVEMENTS:
               </div>
 
               {/* Resume / CV Downloads */}
+              {/* Resume / CV Download */}
               <div className="pt-2 border-t border-slate-100 dark:border-slate-800">
                 <div className="text-xs font-bold text-slate-700 dark:text-slate-300 mb-3 flex items-center gap-1.5">
                   <FileText className="w-4 h-4 text-slate-400" />
-                  <span>{language === 'ar' ? 'تحميل السيرة الذاتية المهنية' : 'Download Professional CV'}</span>
+                  <span>
+                    {language === 'ar'
+                      ? 'تحميل السيرة الذاتية'
+                      : 'Download Resume'}
+                  </span>
                 </div>
-                <div className="grid grid-cols-2 gap-2">
-                  <button
-                    onClick={() => handleDownloadCV('en')}
-                    className="py-2.5 px-3 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 flex items-center justify-center gap-1.5 transition-colors"
-                  >
-                    <Download className="w-3.5 h-3.5 text-blue-500" />
-                    <span>English CV</span>
-                  </button>
-                  <button
-                    onClick={() => handleDownloadCV('ar')}
-                    className="py-2.5 px-3 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 flex items-center justify-center gap-1.5 transition-colors"
-                  >
-                    <Download className="w-3.5 h-3.5 text-emerald-500" />
-                    <span>عربي CV</span>
-                  </button>
-                </div>
+
+                <a
+                  href="/IT support engineer .pdf"
+                  download="Masum_Raza_Resume.pdf"
+                  className="w-full py-2.5 px-3 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 flex items-center justify-center gap-1.5 transition-colors"
+                >
+                  <Download className="w-3.5 h-3.5 text-blue-500" />
+                  <span>
+                    {language === 'ar'
+                      ? 'تحميل السيرة الذاتية PDF'
+                      : 'Download Resume PDF'}
+                  </span>
+                </a>
               </div>
             </div>
           </div>
